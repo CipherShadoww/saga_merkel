@@ -1,0 +1,11 @@
+source,qmax,rtt_ms,tcrypto_ms,m_requests,amortized_ms_per_request
+measured,1,31.948,2.3466,100,34.2945
+measured,5,31.948,2.3466,100,6.8589
+measured,10,31.948,2.3466,100,3.4295
+measured,20,31.948,2.3466,100,1.7147
+measured,30,31.948,2.3466,100,1.3718
+paper_model,1,31.948,7.0,100,38.948
+paper_model,5,31.948,7.0,100,7.7896
+paper_model,10,31.948,7.0,100,3.8948
+paper_model,20,31.948,7.0,100,1.9474
+paper_model,30,31.948,7.0,100,1.5579
