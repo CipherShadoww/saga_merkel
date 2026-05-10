@@ -1,0 +1,542 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<meta name="generator" content="pdoc3 0.11.6">
+<title>saga.security.interaction_ledger API documentation</title>
+<meta name="description" content="Persistent Merkleized interaction ledger for SAGA agents.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/sanitize.min.css" integrity="sha512-y1dtMcuvtTMJc1yPgEqF0ZjQbhnc/bFhyvIyVNb9Zk5mIGtqVaAB1Ttl28su8AvFMOY0EwRbAe+HCLqj6W7/KA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/13.0.0/typography.min.css" integrity="sha512-Y1DYSb995BAfxobCkKepB1BqJJTPrOp3zPL74AWFugHHmmdcvO+C48WLrUOlhGMc0QG7AE3f7gmvvcrmX2fDoA==" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:1.5em;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:2em 0 .50em 0}h3{font-size:1.4em;margin:1.6em 0 .7em 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .2s ease-in-out}a:visited{color:#503}a:hover{color:#b62}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900;font-weight:bold}pre code{font-size:.8em;line-height:1.4em;padding:1em;display:block}code{background:#f3f3f3;font-family:"DejaVu Sans Mono",monospace;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source > summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible;min-width:max-content}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em 1em;margin:1em 0}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul ul{padding-left:1em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js" integrity="sha512-D9gUyxqja7hBtkWpPWGt9wfbfaMGVt9gnyCvYa+jojwwPHLCzUm5i8rpk7vD7wNee9bA35eYIjobYPaQuKS1MQ==" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => {
+hljs.configure({languages: ['bash', 'css', 'diff', 'graphql', 'ini', 'javascript', 'json', 'plaintext', 'python', 'python-repl', 'rust', 'shell', 'sql', 'typescript', 'xml', 'yaml']});
+hljs.highlightAll();
+/* Collapse source docstrings */
+setTimeout(() => {
+[...document.querySelectorAll('.hljs.language-python > .hljs-string')]
+.filter(el => el.innerHTML.length > 200 && ['"""', "'''"].includes(el.innerHTML.substring(0, 3)))
+.forEach(el => {
+let d = document.createElement('details');
+d.classList.add('hljs-string');
+d.innerHTML = '<summary>"""</summary>' + el.innerHTML.substring(3);
+el.replaceWith(d);
+});
+}, 100);
+})</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>saga.security.interaction_ledger</code></h1>
+</header>
+<section id="section-intro">
+<p>Persistent Merkleized interaction ledger for SAGA agents.</p>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-functions">Functions</h2>
+<dl>
+<dt id="saga.security.interaction_ledger.compute_interaction_hash"><code class="name flex">
+<span>def <span class="ident">compute_interaction_hash</span></span>(<span>record: Dict[str, Any]) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def compute_interaction_hash(record: Dict[str, Any]) -&gt; str:
+    fields = {
+        &#34;interaction_id&#34;: record[&#34;interaction_id&#34;],
+        &#34;timestamp&#34;: record[&#34;timestamp&#34;],
+        &#34;source_agent&#34;: record[&#34;source_agent&#34;],
+        &#34;destination_agent&#34;: record[&#34;destination_agent&#34;],
+        &#34;session_id&#34;: record[&#34;session_id&#34;],
+        &#34;payload_digest&#34;: record[&#34;payload_digest&#34;],
+        &#34;previous_hash&#34;: record[&#34;previous_hash&#34;],
+    }
+    return hashlib.sha256(_canonical_json(fields).encode(&#34;utf-8&#34;)).hexdigest()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.digest_payload"><code class="name flex">
+<span>def <span class="ident">digest_payload</span></span>(<span>payload: Any) ‑> str</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def digest_payload(payload: Any) -&gt; str:
+    if isinstance(payload, bytes):
+        payload_bytes = payload
+    elif isinstance(payload, str):
+        payload_bytes = payload.encode(&#34;utf-8&#34;)
+    else:
+        payload_bytes = _canonical_json(payload).encode(&#34;utf-8&#34;)
+    return hashlib.sha256(payload_bytes).hexdigest()</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="saga.security.interaction_ledger.InteractionLedger"><code class="flex name class">
+<span>class <span class="ident">InteractionLedger</span></span>
+<span>(</span><span>ledger_dir: os.PathLike | None = None,<br>batch_size: int | None = None,<br>ledger_filename: str = 'interaction_ledger.jsonl',<br>roots_filename: str = 'merkle_roots.jsonl')</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class InteractionLedger:
+    &#34;&#34;&#34;
+    Append-only JSONL interaction ledger with hash-chain and Merkle checkpoints.
+
+    The implementation is intentionally storage-light and file-backed by default
+    so it can run in local experiments without MongoDB schema changes. A Mongo
+    implementation can use the same public methods.
+    &#34;&#34;&#34;
+    _lock = threading.Lock()
+
+    def __init__(
+        self,
+        ledger_dir: Optional[os.PathLike] = None,
+        batch_size: Optional[int] = None,
+        ledger_filename: str = &#34;interaction_ledger.jsonl&#34;,
+        roots_filename: str = &#34;merkle_roots.jsonl&#34;,
+    ):
+        self.ledger_dir = Path(ledger_dir) if ledger_dir is not None else _default_ledger_dir()
+        self.batch_size = int(os.getenv(&#34;SAGA_LEDGER_BATCH_SIZE&#34;, batch_size or DEFAULT_BATCH_SIZE))
+        self.ledger_path = self.ledger_dir / ledger_filename
+        self.roots_path = self.ledger_dir / roots_filename
+        self.ledger_dir.mkdir(parents=True, exist_ok=True)
+        self.ledger_path.touch(exist_ok=True)
+        self.roots_path.touch(exist_ok=True)
+
+    def append_interaction(
+        self,
+        source_agent: str,
+        destination_agent: str,
+        session_id: str,
+        payload: Any,
+        timestamp: Optional[float] = None,
+    ) -&gt; Dict[str, Any]:
+        with self._lock:
+            previous_hash = self._last_interaction_hash()
+            record = {
+                &#34;interaction_id&#34;: str(uuid.uuid4()),
+                &#34;timestamp&#34;: timestamp if timestamp is not None else time.time(),
+                &#34;source_agent&#34;: source_agent,
+                &#34;destination_agent&#34;: destination_agent,
+                &#34;session_id&#34;: session_id,
+                &#34;payload_digest&#34;: digest_payload(payload),
+                &#34;previous_hash&#34;: previous_hash,
+            }
+            record[&#34;interaction_hash&#34;] = compute_interaction_hash(record)
+
+            with self.ledger_path.open(&#34;a&#34;, encoding=&#34;utf-8&#34;) as handle:
+                handle.write(_canonical_json(record) + &#34;\n&#34;)
+
+            records = self.load_records()
+            if len(records) % self.batch_size == 0:
+                self._persist_merkle_root(records)
+            return record
+
+    def load_records(self) -&gt; List[Dict[str, Any]]:
+        records = []
+        with self.ledger_path.open(&#34;r&#34;, encoding=&#34;utf-8&#34;) as handle:
+            for line in handle:
+                line = line.strip()
+                if line:
+                    records.append(json.loads(line))
+        return records
+
+    def load_roots(self) -&gt; List[Dict[str, Any]]:
+        roots = []
+        with self.roots_path.open(&#34;r&#34;, encoding=&#34;utf-8&#34;) as handle:
+            for line in handle:
+                line = line.strip()
+                if line:
+                    roots.append(json.loads(line))
+        return roots
+
+    def build_merkle_tree(self, interaction_hashes: Iterable[str]):
+        from saga.security.merkle_tree import build_merkle_tree
+
+        return build_merkle_tree(interaction_hashes)
+
+    def generate_merkle_root(self, interaction_hashes: Optional[Iterable[str]] = None) -&gt; Optional[str]:
+        hashes = list(interaction_hashes) if interaction_hashes is not None else [
+            record[&#34;interaction_hash&#34;] for record in self.load_records()
+        ]
+        return merkle_generate_root(hashes)
+
+    def generate_merkle_proof(self, interaction_hash: str) -&gt; Dict[str, Any]:
+        records = self.load_records()
+        hashes = [record[&#34;interaction_hash&#34;] for record in records]
+        if interaction_hash not in hashes:
+            return {&#34;interaction_hash&#34;: interaction_hash, &#34;proof&#34;: [], &#34;merkle_root&#34;: None}
+
+        index = hashes.index(interaction_hash)
+        batch_start = (index // self.batch_size) * self.batch_size
+        batch_end = min(batch_start + self.batch_size, len(hashes))
+        batch_hashes = hashes[batch_start:batch_end]
+        return {
+            &#34;interaction_hash&#34;: interaction_hash,
+            &#34;batch_start&#34;: batch_start,
+            &#34;batch_end&#34;: batch_end - 1,
+            &#34;merkle_root&#34;: merkle_generate_root(batch_hashes),
+            &#34;proof&#34;: merkle_generate_proof(batch_hashes, interaction_hash),
+        }
+
+    def verify_merkle_proof(self, interaction_hash: str, proof: List[dict], merkle_root: str) -&gt; bool:
+        return merkle_verify_proof(interaction_hash, proof, merkle_root)
+
+    def verify_ledger_integrity(self) -&gt; Dict[str, Any]:
+        records = self.load_records()
+        errors = []
+        previous_hash = ZERO_HASH
+
+        for index, record in enumerate(records):
+            expected_hash = compute_interaction_hash(record)
+            if record.get(&#34;interaction_hash&#34;) != expected_hash:
+                errors.append({
+                    &#34;type&#34;: &#34;hash_mismatch&#34;,
+                    &#34;index&#34;: index,
+                    &#34;interaction_id&#34;: record.get(&#34;interaction_id&#34;),
+                })
+            if record.get(&#34;previous_hash&#34;) != previous_hash:
+                errors.append({
+                    &#34;type&#34;: &#34;chain_break&#34;,
+                    &#34;index&#34;: index,
+                    &#34;interaction_id&#34;: record.get(&#34;interaction_id&#34;),
+                    &#34;expected_previous_hash&#34;: previous_hash,
+                    &#34;actual_previous_hash&#34;: record.get(&#34;previous_hash&#34;),
+                })
+            previous_hash = record.get(&#34;interaction_hash&#34;)
+
+        root_errors = self._verify_persisted_roots(records)
+        errors.extend(root_errors)
+        return {
+            &#34;valid&#34;: not errors,
+            &#34;record_count&#34;: len(records),
+            &#34;latest_hash&#34;: previous_hash if records else ZERO_HASH,
+            &#34;merkle_root&#34;: self.generate_merkle_root(),
+            &#34;errors&#34;: errors,
+        }
+
+    def _last_interaction_hash(self) -&gt; str:
+        last_hash = ZERO_HASH
+        with self.ledger_path.open(&#34;r&#34;, encoding=&#34;utf-8&#34;) as handle:
+            for line in handle:
+                line = line.strip()
+                if line:
+                    last_hash = json.loads(line)[&#34;interaction_hash&#34;]
+        return last_hash
+
+    def _persist_merkle_root(self, records: List[Dict[str, Any]]) -&gt; None:
+        batch_start = len(records) - self.batch_size
+        batch_end = len(records) - 1
+        batch_hashes = [
+            record[&#34;interaction_hash&#34;]
+            for record in records[batch_start:batch_end + 1]
+        ]
+        root_record = {
+            &#34;batch_start&#34;: batch_start,
+            &#34;batch_end&#34;: batch_end,
+            &#34;record_count&#34;: len(batch_hashes),
+            &#34;merkle_root&#34;: merkle_generate_root(batch_hashes),
+            &#34;created_at&#34;: time.time(),
+        }
+        roots = self.load_roots()
+        if roots and roots[-1].get(&#34;batch_start&#34;) == batch_start:
+            return
+        with self.roots_path.open(&#34;a&#34;, encoding=&#34;utf-8&#34;) as handle:
+            handle.write(_canonical_json(root_record) + &#34;\n&#34;)
+
+    def _verify_persisted_roots(self, records: List[Dict[str, Any]]) -&gt; List[Dict[str, Any]]:
+        errors = []
+        roots = self.load_roots()
+        hashes = [record[&#34;interaction_hash&#34;] for record in records]
+        for root in roots:
+            batch_start = root.get(&#34;batch_start&#34;)
+            batch_end = root.get(&#34;batch_end&#34;)
+            if batch_start is None or batch_end is None:
+                errors.append({&#34;type&#34;: &#34;malformed_merkle_root&#34;, &#34;root&#34;: root})
+                continue
+            if batch_end &gt;= len(hashes):
+                errors.append({&#34;type&#34;: &#34;merkle_root_points_past_ledger&#34;, &#34;root&#34;: root})
+                continue
+            batch_hashes = hashes[batch_start:batch_end + 1]
+            expected_root = merkle_generate_root(batch_hashes)
+            if root.get(&#34;merkle_root&#34;) != expected_root:
+                errors.append({
+                    &#34;type&#34;: &#34;merkle_root_mismatch&#34;,
+                    &#34;batch_start&#34;: batch_start,
+                    &#34;batch_end&#34;: batch_end,
+                    &#34;expected_merkle_root&#34;: expected_root,
+                    &#34;actual_merkle_root&#34;: root.get(&#34;merkle_root&#34;),
+                })
+        return errors</code></pre>
+</details>
+<div class="desc"><p>Append-only JSONL interaction ledger with hash-chain and Merkle checkpoints.</p>
+<p>The implementation is intentionally storage-light and file-backed by default
+so it can run in local experiments without MongoDB schema changes. A Mongo
+implementation can use the same public methods.</p></div>
+<h3>Methods</h3>
+<dl>
+<dt id="saga.security.interaction_ledger.InteractionLedger.append_interaction"><code class="name flex">
+<span>def <span class="ident">append_interaction</span></span>(<span>self,<br>source_agent: str,<br>destination_agent: str,<br>session_id: str,<br>payload: Any,<br>timestamp: float | None = None) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def append_interaction(
+    self,
+    source_agent: str,
+    destination_agent: str,
+    session_id: str,
+    payload: Any,
+    timestamp: Optional[float] = None,
+) -&gt; Dict[str, Any]:
+    with self._lock:
+        previous_hash = self._last_interaction_hash()
+        record = {
+            &#34;interaction_id&#34;: str(uuid.uuid4()),
+            &#34;timestamp&#34;: timestamp if timestamp is not None else time.time(),
+            &#34;source_agent&#34;: source_agent,
+            &#34;destination_agent&#34;: destination_agent,
+            &#34;session_id&#34;: session_id,
+            &#34;payload_digest&#34;: digest_payload(payload),
+            &#34;previous_hash&#34;: previous_hash,
+        }
+        record[&#34;interaction_hash&#34;] = compute_interaction_hash(record)
+
+        with self.ledger_path.open(&#34;a&#34;, encoding=&#34;utf-8&#34;) as handle:
+            handle.write(_canonical_json(record) + &#34;\n&#34;)
+
+        records = self.load_records()
+        if len(records) % self.batch_size == 0:
+            self._persist_merkle_root(records)
+        return record</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.build_merkle_tree"><code class="name flex">
+<span>def <span class="ident">build_merkle_tree</span></span>(<span>self, interaction_hashes: Iterable[str])</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def build_merkle_tree(self, interaction_hashes: Iterable[str]):
+    from saga.security.merkle_tree import build_merkle_tree
+
+    return build_merkle_tree(interaction_hashes)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.generate_merkle_proof"><code class="name flex">
+<span>def <span class="ident">generate_merkle_proof</span></span>(<span>self, interaction_hash: str) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_merkle_proof(self, interaction_hash: str) -&gt; Dict[str, Any]:
+    records = self.load_records()
+    hashes = [record[&#34;interaction_hash&#34;] for record in records]
+    if interaction_hash not in hashes:
+        return {&#34;interaction_hash&#34;: interaction_hash, &#34;proof&#34;: [], &#34;merkle_root&#34;: None}
+
+    index = hashes.index(interaction_hash)
+    batch_start = (index // self.batch_size) * self.batch_size
+    batch_end = min(batch_start + self.batch_size, len(hashes))
+    batch_hashes = hashes[batch_start:batch_end]
+    return {
+        &#34;interaction_hash&#34;: interaction_hash,
+        &#34;batch_start&#34;: batch_start,
+        &#34;batch_end&#34;: batch_end - 1,
+        &#34;merkle_root&#34;: merkle_generate_root(batch_hashes),
+        &#34;proof&#34;: merkle_generate_proof(batch_hashes, interaction_hash),
+    }</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.generate_merkle_root"><code class="name flex">
+<span>def <span class="ident">generate_merkle_root</span></span>(<span>self, interaction_hashes: Iterable[str] | None = None) ‑> str | None</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def generate_merkle_root(self, interaction_hashes: Optional[Iterable[str]] = None) -&gt; Optional[str]:
+    hashes = list(interaction_hashes) if interaction_hashes is not None else [
+        record[&#34;interaction_hash&#34;] for record in self.load_records()
+    ]
+    return merkle_generate_root(hashes)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.load_records"><code class="name flex">
+<span>def <span class="ident">load_records</span></span>(<span>self) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_records(self) -&gt; List[Dict[str, Any]]:
+    records = []
+    with self.ledger_path.open(&#34;r&#34;, encoding=&#34;utf-8&#34;) as handle:
+        for line in handle:
+            line = line.strip()
+            if line:
+                records.append(json.loads(line))
+    return records</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.load_roots"><code class="name flex">
+<span>def <span class="ident">load_roots</span></span>(<span>self) ‑> List[Dict[str, Any]]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def load_roots(self) -&gt; List[Dict[str, Any]]:
+    roots = []
+    with self.roots_path.open(&#34;r&#34;, encoding=&#34;utf-8&#34;) as handle:
+        for line in handle:
+            line = line.strip()
+            if line:
+                roots.append(json.loads(line))
+    return roots</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.verify_ledger_integrity"><code class="name flex">
+<span>def <span class="ident">verify_ledger_integrity</span></span>(<span>self) ‑> Dict[str, Any]</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_ledger_integrity(self) -&gt; Dict[str, Any]:
+    records = self.load_records()
+    errors = []
+    previous_hash = ZERO_HASH
+
+    for index, record in enumerate(records):
+        expected_hash = compute_interaction_hash(record)
+        if record.get(&#34;interaction_hash&#34;) != expected_hash:
+            errors.append({
+                &#34;type&#34;: &#34;hash_mismatch&#34;,
+                &#34;index&#34;: index,
+                &#34;interaction_id&#34;: record.get(&#34;interaction_id&#34;),
+            })
+        if record.get(&#34;previous_hash&#34;) != previous_hash:
+            errors.append({
+                &#34;type&#34;: &#34;chain_break&#34;,
+                &#34;index&#34;: index,
+                &#34;interaction_id&#34;: record.get(&#34;interaction_id&#34;),
+                &#34;expected_previous_hash&#34;: previous_hash,
+                &#34;actual_previous_hash&#34;: record.get(&#34;previous_hash&#34;),
+            })
+        previous_hash = record.get(&#34;interaction_hash&#34;)
+
+    root_errors = self._verify_persisted_roots(records)
+    errors.extend(root_errors)
+    return {
+        &#34;valid&#34;: not errors,
+        &#34;record_count&#34;: len(records),
+        &#34;latest_hash&#34;: previous_hash if records else ZERO_HASH,
+        &#34;merkle_root&#34;: self.generate_merkle_root(),
+        &#34;errors&#34;: errors,
+    }</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+<dt id="saga.security.interaction_ledger.InteractionLedger.verify_merkle_proof"><code class="name flex">
+<span>def <span class="ident">verify_merkle_proof</span></span>(<span>self, interaction_hash: str, proof: List[dict], merkle_root: str) ‑> bool</span>
+</code></dt>
+<dd>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">def verify_merkle_proof(self, interaction_hash: str, proof: List[dict], merkle_root: str) -&gt; bool:
+    return merkle_verify_proof(interaction_hash, proof, merkle_root)</code></pre>
+</details>
+<div class="desc"></div>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<header>
+<a class="homelink" rel="home" title="SAGA Home" href="https://gsiros.github.io/saga/">
+<img src="https://raw.githubusercontent.com/gsiros/saga/94f3562b8f9821717bff825aa4111b2ee5cecec5/assets/logo.png" alt="SAGA" width="256">
+</a>
+</header>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="saga.security" href="index.html">saga.security</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-functions">Functions</a></h3>
+<ul class="">
+<li><code><a title="saga.security.interaction_ledger.compute_interaction_hash" href="#saga.security.interaction_ledger.compute_interaction_hash">compute_interaction_hash</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.digest_payload" href="#saga.security.interaction_ledger.digest_payload">digest_payload</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="saga.security.interaction_ledger.InteractionLedger" href="#saga.security.interaction_ledger.InteractionLedger">InteractionLedger</a></code></h4>
+<ul class="">
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.append_interaction" href="#saga.security.interaction_ledger.InteractionLedger.append_interaction">append_interaction</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.build_merkle_tree" href="#saga.security.interaction_ledger.InteractionLedger.build_merkle_tree">build_merkle_tree</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.generate_merkle_proof" href="#saga.security.interaction_ledger.InteractionLedger.generate_merkle_proof">generate_merkle_proof</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.generate_merkle_root" href="#saga.security.interaction_ledger.InteractionLedger.generate_merkle_root">generate_merkle_root</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.load_records" href="#saga.security.interaction_ledger.InteractionLedger.load_records">load_records</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.load_roots" href="#saga.security.interaction_ledger.InteractionLedger.load_roots">load_roots</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.verify_ledger_integrity" href="#saga.security.interaction_ledger.InteractionLedger.verify_ledger_integrity">verify_ledger_integrity</a></code></li>
+<li><code><a title="saga.security.interaction_ledger.InteractionLedger.verify_merkle_proof" href="#saga.security.interaction_ledger.InteractionLedger.verify_merkle_proof">verify_merkle_proof</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.11.6</a>.</p>
+</footer>
+</body>
+</html>
